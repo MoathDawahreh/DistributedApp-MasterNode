@@ -26,9 +26,7 @@ jobs:
       run: mvn -B package --file pom.xml
     - name: list the directory content
        run: |
-          cd target 
-          ls -al
-          mvn tomcat7:run
+           mvn tomcat7:run
      - name: Build and Push docker image
     - name: Build and Push docker image
        uses: mr-smithers-excellent/docker-build-push@v5
