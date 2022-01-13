@@ -16,7 +16,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Set up JDK 14
+    - name: Set up JDK 17
       uses: actions/setup-java@v2
       with:
         java-version: '17'
@@ -28,7 +28,7 @@ jobs:
       run: |
           cd target 
           ls -al
-          java -war DocumentDB-1.0-SNAPSHOT.war
+          java -jar DocumentDB-1.0-SNAPSHOT.war
     - name: Build and Push docker image
       uses: mr-smithers-excellent/docker-build-push@v5
       with:
