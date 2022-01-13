@@ -2,5 +2,7 @@ From openjdk:latest
 
 copy ./target /
 
-CMD ["java", "-war", "./DocumentDB-1.0-SNAPSHOT.war"]
+RUN ["mvn", "package"]
 
+EXPOSE 8080
+CMD ["mvn", "tomcat7:run"]
