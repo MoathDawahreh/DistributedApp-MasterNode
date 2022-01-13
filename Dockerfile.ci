@@ -1,0 +1,6 @@
+From openjdk:latest
+
+copy ./target /
+
+CMD ["java", "-war", "./DocumentDB-1.0-SNAPSHOT.war"]
+
