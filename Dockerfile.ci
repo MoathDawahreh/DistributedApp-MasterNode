@@ -1,5 +1,4 @@
-From openjdk:latest
-# ----
+FROM openjdk:8-jdk-alpine # ----
 
 # Install Maven
 RUN apk add --no-cache curl tar bash
