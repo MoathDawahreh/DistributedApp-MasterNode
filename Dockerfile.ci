@@ -15,9 +15,7 @@ ENTRYPOINT ["/usr/bin/mvn"
 
 
 
-WORKDIR /code
-# Prepare by downloading dependencies
-ADD pom.xml /code/pom.xml
+
 
 # Adding source, compile and package into a fat jar
 ADD src /code/src
