@@ -1,3 +1,7 @@
 0:0:0:0:0:0:0:1 - - [13/Jan/2022:01:59:19 +0200] "GET /StudentServlet HTTP/1.1" 200 78 http-bio-8080-exec-1 26
 0:0:0:0:0:0:0:1 - - [13/Jan/2022:02:00:30 +0200] "GET /StudentServlet HTTP/1.1" 200 8 http-bio-8080-exec-1 24
 0:0:0:0:0:0:0:1 - - [13/Jan/2022:02:00:31 +0200] "GET /StudentServlet HTTP/1.1" 200 8 http-bio-8080-exec-2 0
+0:0:0:0:0:0:0:1 - - [13/Jan/2022:11:40:26 +0200] "GET / HTTP/1.1" 404 951 http-bio-8080-exec-1 25
+0:0:0:0:0:0:0:1 - - [13/Jan/2022:11:40:26 +0200] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-8080-exec-2 1
+0:0:0:0:0:0:0:1 - - [13/Jan/2022:11:40:32 +0200] "GET /StudentServlet HTTP/1.1" 200 173 http-bio-8080-exec-3 42
+0:0:0:0:0:0:0:1 - - [13/Jan/2022:11:41:44 +0200] "GET /StudentServlet HTTP/1.1" 200 173 http-bio-8080-exec-5 4
