@@ -25,6 +25,8 @@ FROM openjdk:8-jdk-alpine
         # Adding source, compile and package into a fat jar
 
         EXPOSE 8080
+        CMD ["mvn", "install"]
+
         CMD ["mvn", "tomcat7:run"]
 
 
