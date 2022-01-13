@@ -25,17 +25,13 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
     - name: list the directory content
-<<<<<<< HEAD
-      run: |
+       run: |
           cd target 
           ls -al
           mvn tomcat7:run
      - name: Build and Push docker image
-=======
-     
     - name: Build and Push docker image
->>>>>>> 19e4db8add2857c0b3c0cbd051028de614294a7e
-      uses: mr-smithers-excellent/docker-build-push@v5
+       uses: mr-smithers-excellent/docker-build-push@v5
       with:
        image: thawahreh/DocumentDB
        registry: docker.io
