@@ -1,0 +1,7 @@
+DB\Collection.class
+DB\DB.class
+Main.class
+DB\DBManager.class
+DB\Document.class
+DB\CRUD\Read.class
+DB\Cluster.class
