@@ -23,7 +23,8 @@ FROM openjdk:8-jdk-alpine
         RUN mvn -T 1C install && rm -rf target
 
         # Adding source, compile and package into a fat jar
-         RUN ["mvn", "package"]
+        ADD /usr/share/maven
+        RUN ["mvn", "package"]
 
         EXPOSE 8080
         CMD ["mvn", "tomcat7:run"]
