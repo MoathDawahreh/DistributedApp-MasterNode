@@ -16,16 +16,7 @@
 
     </properties>
 
-    <distributionManagement>
-        <repository>
-            <uniqueVersion>false</uniqueVersion>
-            <id>corp1</id>
-            <name>Corporate Repository</name>
-            <url>scp://repo/maven2</url>
-            <layout>default</layout>
-        </repository>
 
-    </distributionManagement>
     <dependencies>
         <dependency>
             <groupId>javax</groupId>
@@ -64,9 +55,9 @@
         </dependency>
     </dependencies>
     <build>
-        <plugins>
 
-             <plugin>
+        <plugins>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.3.2</version>
@@ -81,6 +72,8 @@
                     <contextReloadable>true</contextReloadable>
                 </configuration>
             </plugin>
+
+
         </plugins>
     </build>
 
