@@ -1,6 +1,6 @@
 FROM openjdk:8
 
-    sudo docker run \
+  RUN  sudo docker run \
       --name tomcat \
       -it \
       -p 8080:8080 \
