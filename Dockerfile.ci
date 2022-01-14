@@ -19,7 +19,7 @@ FROM openjdk:8-jdk-alpine
         # install maven dependency packages (keep in image)
         COPY pom.xml /usr/src/app
         RUN mvn -T 1C install && rm -rf target
-
+        EXPOSE 8080
         RUN ["mvn", "tomcat7:run"]
 
 
