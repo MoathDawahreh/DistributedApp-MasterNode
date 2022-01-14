@@ -1,2 +1,2 @@
-FROM tomcat:9.0-jre8-alpine
+FROM tomcat
 COPY target/DocumentDB-1.0-SNAPSHOT.war $CATALINA_HOME/webapps/DocumentDB-1.0-SNAPSHOT.war
