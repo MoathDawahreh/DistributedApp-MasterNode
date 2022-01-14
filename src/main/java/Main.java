@@ -132,3 +132,8 @@ public class Main {
 //
 //        EXPOSE 8080
 //        CMD ["mvn", "tomcat7:run"]
+
+// .......................
+//FROM tomcat
+//    COPY target/DocumentDB-1.0-SNAPSHOT.war $CATALINA_HOME/webapps/DocumentDB-1.0-SNAPSHOT.war
+//
