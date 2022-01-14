@@ -35,13 +35,8 @@ public class DBManager extends HttpServlet {
 
       //  resp.getOutputStream().println(json);
 
-        out.println("<html><body>");
-        out.println("<h1>" + "Hello "  + "</h1>");
+        out.println(json);
 
-        out.println("<dl>\n");
-
-
-        out.println("</body></html>");
 
 
     }
