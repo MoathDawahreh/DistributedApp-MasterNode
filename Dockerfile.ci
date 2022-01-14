@@ -1,7 +1,7 @@
 
-$ ls
+ ls
 Dockerfile  DocumentDB-1.0-SNAPSHOT.war
-$ cat Dockerfile
+ cat Dockerfile
 FROM tomcat
 
 COPY target/DocumentDB-1.0-SNAPSHOT.war
