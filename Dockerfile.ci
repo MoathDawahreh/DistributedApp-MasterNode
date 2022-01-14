@@ -7,4 +7,4 @@ FROM openjdk:8
       -v /tmp/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml \
       -v /tmp/context.xml:/tmp/context.xml \
       tomcat:9.0 \
-     CMD  /bin/bash -c "mv /usr/local/tomcat/webapps /usr/local/tomcat/webapps2; mv /usr/local/tomcat/webapps.dist /usr/local/tomcat/webapps; cp /tmp/context.xml /usr/local/tomcat/webapps/manager/META-INF/context.xml; catalina.sh run"
+     RUN  /bin/bash -c "mv /usr/local/tomcat/webapps /usr/local/tomcat/webapps2; mv /usr/local/tomcat/webapps.dist /usr/local/tomcat/webapps; cp /tmp/context.xml /usr/local/tomcat/webapps/manager/META-INF/context.xml; catalina.sh run"
