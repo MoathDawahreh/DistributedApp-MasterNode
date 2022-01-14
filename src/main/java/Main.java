@@ -104,7 +104,7 @@ public class Main {
 
 //
 //
-//
+// FROM openjdk:8-jdk-alpine
 //# Install Maven
 //        RUN apk add --no-cache curl tar bash
 //        ARG MAVEN_VERSION=3.3.9
