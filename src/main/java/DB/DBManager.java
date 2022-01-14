@@ -13,9 +13,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.util.stream.Collectors;
 
+
 @WebServlet(name = "StudentServlet", value = "/StudentServlet")
+
 public class DBManager extends HttpServlet {
     private Gson GSON = new GsonBuilder().create();
 
@@ -27,10 +30,18 @@ public class DBManager extends HttpServlet {
         Read read = new Read();
         String json = GSON.toJson( read.read());
 
+        PrintWriter out = resp.getWriter();
 
 
-        resp.getOutputStream().println(json);
+      //  resp.getOutputStream().println(json);
 
+        out.println("<html><body>");
+        out.println("<h1>" + "Hello "  + "</h1>");
+
+        out.println("<dl>\n");
+
+
+        out.println("</body></html>");
 
 
     }
