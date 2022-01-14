@@ -1,5 +1,5 @@
 FROM openjdk:8-jdk-alpine
-Install Maven
+#Install Maven
         RUN apk add --no-cache curl tar bash
         ARG MAVEN_VERSION=3.3.9
         ARG USER_HOME_DIR="/root"
@@ -19,7 +19,7 @@ Install Maven
         # install maven dependency packages (keep in image)
         COPY pom.xml /usr/src/app
         RUN mvn -T 1C install && rm -rf target
- 
+
         RUN ["mvn", "tomcat7:run"]
 
 
