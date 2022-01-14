@@ -69,11 +69,20 @@
                 <version>2.2</version>
                 <executions>
                     <execution>
-                        <id>my-execution</id>
-                        <phase>package</phase>
-                        <goals>
+                        <id>tomcat-run</id>
+                         <goals>
                             <goal>exec-war-only</goal>
                         </goals>
+                        <phase>package</phase>
+                        <configuration>
+                            <path>foo</path>
+                            <!-- optional, needed only if you want to use a preconfigured server.xml file -->
+                            <serverXml>src/main/tomcatconf/server.xml</serverXml>
+                            <!-- optional values which can be configurable -->
+                            <attachArtifactClassifier> exec-war</attachArtifactClassifier>
+                            <attachArtifactClassifierType>jar</attachArtifactClassifierType>
+                        </configuration>
+
                     </execution>
                 </executions>
                 <configuration>
