@@ -1,3 +1,6 @@
+FROM openjdk:8-jdk-alpine
+
+
 # Install Maven
         RUN apk add --no-cache curl tar bash
         ARG MAVEN_VERSION=3.3.9
@@ -20,7 +23,7 @@
         RUN mvn -T 1C install && rm -rf target
 
         # Adding source, compile and package into a fat jar
-        
+
 
         EXPOSE 8080
         RUN ["mvn", "tomcat7:run"]
