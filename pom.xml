@@ -67,6 +67,15 @@
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <version>2.2</version>
+                <executions>
+                    <execution>
+                        <id>my-execution</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>exec-war-only</goal>
+                        </goals>
+                    </execution>
+                </executions>
                 <configuration>
                     <path>/</path>
                     <contextReloadable>true</contextReloadable>
