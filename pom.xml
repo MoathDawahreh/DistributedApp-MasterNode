@@ -72,7 +72,7 @@
                     <artifactId>tomcat7-maven-plugin</artifactId>
                     <version>2.1</version>
                     <configuration>
-                        <path>/DocumentDB-1.0-SNAPSHOT.war</path>
+                        <path>/DocumentDB-1.0-SNAPSHOT</path>
 
 <!--                        <url>http://localhost:8080/manager/text</url>-->
 <!--                        <username>admin</username>-->
