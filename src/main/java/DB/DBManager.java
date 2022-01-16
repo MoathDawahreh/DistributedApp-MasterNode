@@ -17,7 +17,7 @@ import java.io.PrintWriter;
 import java.util.stream.Collectors;
 
 
-@WebServlet(name = "StudentServlet", value = "/StudentServlet")
+@WebServlet(name = "Companies", value = "/Companies")
 
 public class DBManager extends HttpServlet {
     private Gson GSON = new GsonBuilder().create();

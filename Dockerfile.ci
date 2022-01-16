@@ -1,8 +1,2 @@
-
- ls
-Dockerfile  DocumentDB-1.0-SNAPSHOT.war
- cat Dockerfile
-FROM tomcat
-
-COPY target/DocumentDB-1.0-SNAPSHOT.war
-#COPY ROOT.war /usr/local/tomcat/webapps/
+FROM tomcat:9.0-jre8-alpine
+ COPY target/DocumentDB-1.0-SNAPSHOT.war $CATALINA_HOME/webapps/DocumentDB-1.0-SNAPSHOT.war
