@@ -8,6 +8,6 @@
 <h1><%= "Yep!" %>
 </h1>
 <br/>
-<a href="/Companies">Show companies </a>
+<a href="/DocumentDB-1.0-SNAPSHOT/Companies">Show companies </a>
 </body>
 </html>

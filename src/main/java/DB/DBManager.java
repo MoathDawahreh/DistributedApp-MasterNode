@@ -1,6 +1,6 @@
 package DB;
 
-import DB.CRUD.Read;
+import DB.DAO.Read;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -14,6 +14,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.util.List;
 import java.util.stream.Collectors;
 
 
@@ -28,6 +29,7 @@ public class DBManager extends HttpServlet {
         resp.setStatus(200);
         resp.setHeader("Content-Type", "application/json");
         Read read = new Read();
+        List result = read.read();
         String json = GSON.toJson( read.read());
 
         PrintWriter out = resp.getWriter();
@@ -35,7 +37,7 @@ public class DBManager extends HttpServlet {
 
       //  resp.getOutputStream().println(json);
 
-        out.println(json);
+        out.println(result);
 
 
 

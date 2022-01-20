@@ -1,4 +1,4 @@
-package DB.CRUD;
+package DB.DAO;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -14,7 +14,7 @@ public class Read {
 
      public JSONArray read () {
          JSONParser jsonParser = new JSONParser();
-         JSONArray employeeList = null;
+         JSONArray employeeList = new JSONArray();
          try (FileReader reader = new FileReader("DB.json")) {
              //Read JSON file
              Object obj = jsonParser.parse(reader);
@@ -24,7 +24,7 @@ public class Read {
 
              //Iterate over employee array
              employeeList.forEach(emp -> parseEmployeeObject((JSONObject) emp));
-          } catch (FileNotFoundException e) {
+         } catch (FileNotFoundException e) {
              e.printStackTrace();
          } catch (IOException e) {
              e.printStackTrace();
@@ -34,8 +34,7 @@ public class Read {
          return employeeList;
      }
 
-    private  void parseEmployeeObject(JSONObject employee)
-    {
+    private  void parseEmployeeObject(JSONObject employee) {
         //Get employee object within list
         JSONObject employeeObject = (JSONObject) employee.get("company");
 

@@ -1,12 +1,7 @@
 
-import DB.CRUD.Read;
-import org.json.simple.JSONArray;
+import DB.DAO.Read;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -27,6 +22,10 @@ public class Main {
         //load();
         Read read = new Read();
         read.read();
+
+
+//        WriteTest writeTest = new WriteTest();
+//        writeTest.write();
 
          //System.out.println(list);
 
