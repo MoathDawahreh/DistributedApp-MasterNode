@@ -1,0 +1,16 @@
+[
+  {
+    "company": {
+      "numberOfStaff": "112",
+      "website": "howtodoinjava.com",
+      "companyName": "Lokesh"
+    }
+  },
+  {
+    "company": {
+      "numberOfStaff": "34",
+      "website": "example.com",
+      "companyName": "Brian"
+    }
+  }
+]

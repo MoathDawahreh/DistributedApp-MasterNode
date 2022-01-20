@@ -1,4 +1,6 @@
 
+import DB.DAO.CompanyDao;
+import DB.DAO.CompanyDbDao;
 import DB.DAO.Read;
 import org.json.simple.JSONObject;
 
@@ -18,11 +20,12 @@ public class Main {
     public static void main(String[] args) {
         String uniqueID = UUID.randomUUID().toString();
 
-        System.out.println(uniqueID);
+       // System.out.println(uniqueID);
         //load();
-        Read read = new Read();
-        read.read();
-
+//        Read read = new Read();
+//        read.read();
+        CompanyDao dao = new CompanyDbDao();
+       // dao.addCompany();
 
 //        WriteTest writeTest = new WriteTest();
 //        writeTest.write();

@@ -1,12 +1,12 @@
 package Models;
 
-public class Companies {
+public class Company {
     private String companyName;
     private  String numberOfStaff;
     private String website;
 
 
-    public Companies(String companyName, String numberOfStaff, String website) {
+    public Company(String companyName, String numberOfStaff, String website) {
         this.companyName = companyName;
         this.numberOfStaff = numberOfStaff;
         this.website = website;

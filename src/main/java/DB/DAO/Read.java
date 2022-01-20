@@ -24,11 +24,7 @@ public class Read {
 
              //Iterate over employee array
              employeeList.forEach(emp -> parseEmployeeObject((JSONObject) emp));
-         } catch (FileNotFoundException e) {
-             e.printStackTrace();
-         } catch (IOException e) {
-             e.printStackTrace();
-         } catch (ParseException e) {
+         } catch (IOException | ParseException e) {
              e.printStackTrace();
          }
          return employeeList;

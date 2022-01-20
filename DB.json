@@ -1,16 +1,16 @@
 [
   {
     "company": {
-      "companyName": "Lokesh",
-      "NumberOfStaff": "112",
-      "website": "howtodoinjava.com"
+      "numberOfStaff": "112",
+      "website": "howtodoinjava.com",
+      "companyName": "Lokesh"
     }
   },
   {
     "company": {
-      "companyName": "Brian",
-      "NumberOfStaff": "34",
-      "website": "example.com"
+      "numberOfStaff": "34",
+      "website": "example.com",
+      "companyName": "Brian"
     }
   }
 ]

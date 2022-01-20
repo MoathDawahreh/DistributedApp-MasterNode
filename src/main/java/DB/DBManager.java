@@ -1,7 +1,9 @@
 package DB;
 
+import DB.DAO.CompanyDbDao;
 import DB.DAO.Read;
 
+import Models.Company;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -29,15 +31,17 @@ public class DBManager extends HttpServlet {
         resp.setStatus(200);
         resp.setHeader("Content-Type", "application/json");
         Read read = new Read();
-        List result = read.read();
-        String json = GSON.toJson( read.read());
+        CompanyDbDao com = new CompanyDbDao();
+        List companies = com.getCompanies();
+       // List companies = read.read();
+      //  String json = GSON.toJson( read.read());
 
         PrintWriter out = resp.getWriter();
 
 
       //  resp.getOutputStream().println(json);
 
-        out.println(result);
+        out.println(companies);
 
 
 
@@ -51,6 +55,13 @@ public class DBManager extends HttpServlet {
 
         //BufferedReader reader = new BufferedReader(new InputStreamReader(req.getInputStream()));
         String input = new BufferedReader(new InputStreamReader(req.getInputStream())).lines().collect(Collectors.joining("\n"));
+
+        Company company = GSON.fromJson(input, Company.class);
+        System.out.println("input iss"+company );
+
+        System.out.println("input iss"+company.getNumberOfStaff() );
+        CompanyDbDao dao = new CompanyDbDao();
+         dao.addCompany(company);
 
         //resp.getOutputStream().println(in);
 
