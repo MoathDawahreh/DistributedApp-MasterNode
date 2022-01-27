@@ -25,6 +25,8 @@ import java.util.stream.Collectors;
 
 public class Controller extends HttpServlet {
     private Gson GSON = new GsonBuilder().create();
+    private LoginService service = new LoginService();
+
 //    private   ServletContext context = getServletContext();
 //
 //    @Override
@@ -34,7 +36,7 @@ public class Controller extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-        LoginService service = new LoginService();
+//        LoginService service = new LoginService();
         PrintWriter out = resp.getWriter();
         resp.setContentType("application/json");
         String input = new BufferedReader(new InputStreamReader(req.getInputStream())).lines().collect(Collectors.joining("\n"));

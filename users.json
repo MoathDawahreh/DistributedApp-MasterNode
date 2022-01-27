@@ -1,16 +1,23 @@
 [
   {
     "user": {
-      "userName": "Thawahreh",
       "password": "123",
-      "role": "reader"
+      "role": "reader",
+      "userName": "Thawahreh"
     }
   },
   {
     "user": {
-      "userName": "Jef",
       "password": "22",
-      "role": "admin"
+      "role": "admin",
+      "userName": "Jef"
+    }
+  },
+  {
+    "user": {
+      "password": "111",
+      "role": "reader",
+      "userName": "Hamz"
     }
   }
 ]

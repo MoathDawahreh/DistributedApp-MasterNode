@@ -19,57 +19,30 @@ import static org.junit.Assert.assertThat;
 public class UserDao {
 
     private List<User> userList = new ArrayList<>();
-    private HashMap<String,User> hashMap = new HashMap<>();
+    private HashMap<String, User> hashMap = new HashMap<>();
 
 
-    public void addUser() {
+    public void addUser(User user) {
 
-        //First Employee
-        JSONObject employeeDetails = new JSONObject();
-        employeeDetails.put("userName", "Thawahreh");
-        employeeDetails.put("password", "122");
-        employeeDetails.put("role", "reader");
+        JSONArray companiesList = getUsers();
 
-        JSONObject employeeObject = new JSONObject();
-        employeeObject.put("user", employeeDetails);
 
-        //Second Employee
-        JSONObject employeeDetails2 = new JSONObject();
-        employeeDetails2.put("userName", "Jef");
-        employeeDetails2.put("password", "33");
-        employeeDetails2.put("role", "admin");
+        JSONObject userDetails = new JSONObject();
+       userDetails.put("userName", user.getUserName());
+        userDetails.put("password", user.getPassword());
+        userDetails.put("role", user.getRole());
 
-        JSONObject employeeObject2 = new JSONObject();
-        employeeObject2.put("user", employeeDetails2);
+        JSONObject userObject = new JSONObject();
+        userObject.put("user", userDetails);
 
-        //Add employees to list
-        JSONArray employeeList = new JSONArray();
-        employeeList.add(employeeObject);
-        employeeList.add(employeeObject2);
 
-        //Write JSON file
-//        try (FileWriter file = new FileWriter("users.json")) {
-//          //  File tempFile = new File("users.json");
-//           // System.out.println(tempFile.exists());
-//            //We can write any JSONArray or JSONObject instance to the file
-//            file.write(employeeList.toJSONString());
-//            file.flush();
-//
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
+        //Add a user to list
+        companiesList.add(userObject);
 
-        //............................
 
         try {
-            // File tempFile = new File("temp.txt");
-//            File file = new File("users.json");
-            FileReader reader = new FileReader("users.json");
-            System.out.println("reader: " + reader);
             FileWriter file = new FileWriter("users.json");
-            //We can write any JSONArray or JSONObject instance to the file
-            file.write(employeeList.toJSONString());
+            file.write(companiesList.toJSONString());
             file.flush();
 
         } catch (IOException e) {
@@ -88,39 +61,55 @@ public class UserDao {
             Object obj = jsonParser.parse(reader);
 
             users = (JSONArray) obj;
-            List us = users;
+            users.forEach(u -> parseUserObject((JSONObject) u));
 
-            // System.out.println(users.get(1));
-            users.forEach(u -> parseEmployeeObject((JSONObject) u));
-         //   userList.forEach(t-> System.out.println(t.getUserName()));
-         //  System.out.println(hashMap.get("Thawahreh").getRole());
+            // userList.add(u);
+         //   hashMap.put(userName, u);
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
 
-         return hashMap.get(username);
+        return hashMap.get(username);
+    }
+
+    public JSONArray  getUsers(){
+        JSONParser jsonParser = new JSONParser();
+        JSONArray usersList = new JSONArray();
+        try (FileReader reader = new FileReader("users.json")) {
+            //Read JSON file
+            Object obj = jsonParser.parse(reader);
+
+            usersList = (JSONArray) obj;
+            // System.out.println(usersList);
+            //Iterate over employee array
+          //  usersList.forEach(emp -> parseUserObject((JSONObject) emp));
+        } catch (IOException | ParseException e) {
+            e.printStackTrace();
+        }
+        return usersList;
+
+
+
+
     }
 
 
-    private void parseEmployeeObject(JSONObject user) {
-//        List<User> userList = new ArrayList<>();
-        //Get a company in from the list
+    private void parseUserObject(JSONObject user) {
+
         JSONObject userObject = (JSONObject) user.get("user");
 
-//        System.out.println(userObject);
         String userName = (String) userObject.get("userName");
-//        if (userName.equals()){
-//
-//        }
-        //    System.out.println(userName.equals("Jef"));
+
         String password = (String) userObject.get("password");
 
         String role = (String) userObject.get("role");
         User u = new User(userName, password, role);
-       // userList.add(u);
-        hashMap.put(userName,u);
+          hashMap.put(userName, u);
+
 
     }
+
+
 
 
 }
