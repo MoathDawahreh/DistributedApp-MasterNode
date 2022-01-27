@@ -6,19 +6,21 @@ public class Reader {
     private String password;
     private String url;
 
-    public Reader(String userName, String password,String url) {
+    public Reader(String userName, String password, String url) {
         this.userName = userName;
         this.password = password;
         this.url = url;
     }
-    public  Reader (){
+
+    public Reader() {
 
     }
 
     public String getUserName() {
         return userName;
     }
-    public JSONArray readCompanies(){
+
+    public JSONArray readCompanies() {
         CompanyDbDao companies = new CompanyDbDao();
         return companies.getCompanies();
 
@@ -37,6 +39,6 @@ public class Reader {
         read.getCompanies();
         Reader rd = new Reader();
 
-        return  rd;
+        return rd;
     }
 }
