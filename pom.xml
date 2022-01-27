@@ -48,10 +48,21 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-exec</artifactId>
+            <version>1.3</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.0.2</version>
         </dependency>
     </dependencies>
     <build>
@@ -73,7 +84,7 @@
                     <version>2.1</version>
                     <configuration>
                         <path>/DocumentDB-1.0-SNAPSHOT</path>
-
+  <!-- when running tomcat in docker the  war name should be included like this   http://localhost:8080/DocumentDB-1.0-SNAPSHOT/Companies          -->
 <!--                        <url>http://localhost:8080/manager/text</url>-->
 <!--                        <username>admin</username>-->
 <!--                        <password></password>-->

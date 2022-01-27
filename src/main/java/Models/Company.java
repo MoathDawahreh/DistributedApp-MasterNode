@@ -11,6 +11,9 @@ public class Company {
         this.numberOfStaff = numberOfStaff;
         this.website = website;
     }
+    public void update(){
+        System.out.println("A company were added :)");
+    }
 
     public void setCompanyName(String companyName) {
         this.companyName = companyName;

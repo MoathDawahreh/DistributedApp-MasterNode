@@ -1,16 +1,16 @@
-{
-  "book": [
-    {
-      "id": "01",
-      "language": "Java",
-      "edition": "third",
-      "author": "Herbert Schildt"
-    },
-    {
-      "id": "07",
-      "language": "C++",
-      "edition": "second",
-      "author": "E.Balagurusamy"
+[
+  {
+    "user": {
+      "userName": "Thawahreh",
+      "password": "123",
+      "role": "reader"
     }
-  ]
-}
+  },
+  {
+    "user": {
+      "userName": "Jef",
+      "password": "22",
+      "role": "admin"
+    }
+  }
+]

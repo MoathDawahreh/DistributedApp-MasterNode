@@ -1,11 +1,13 @@
-package DB.DAO;
+package MasterData;
 
 import Models.Company;
 import org.json.simple.JSONArray;
 
+
 public interface CompanyDao {
 
     JSONArray getCompanies();
-    void addCompany(Company company );
+
+    void addCompany(Company company);
 
 }

@@ -14,3 +14,21 @@
     }
   }
 ]
+
+
+[
+  {
+    "user": {
+      "firstName": "Moath",
+      "lastName": "Thawahreh",
+      "role": "reader"
+    }
+  },
+  {
+    "user": {
+      "firstName": "Jef",
+      "lastName": "Dw",
+      "role": "admin"
+    }
+  }
+]

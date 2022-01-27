@@ -1,16 +1,1 @@
-[
-  {
-    "company": {
-      "numberOfStaff": "112",
-      "website": "howtodoinjava.com",
-      "companyName": "Lokesh"
-    }
-  },
-  {
-    "company": {
-      "numberOfStaff": "34",
-      "website": "example.com",
-      "companyName": "Brian"
-    }
-  }
-]
+[{"company":{"numberOfStaff":"112","website":"howtodoinjava.com","companyName":"Lokesh"}},{"company":{"numberOfStaff":"34","website":"example.com","companyName":"Brian"}},{"company":{"numberOfStaff":"300","website":"atypon.com","companyName":"Atypon"}},{"company":{"numberOfStaff":"300","website":"atypon.com","companyName":"Atypon"}},{"company":{"numberOfStaff":"3000","website":"microsoft.com","companyName":"microsoft"}},{"company":{"numberOfStaff":"3000","website":"microsoft.com","companyName":"microsoft"}}]

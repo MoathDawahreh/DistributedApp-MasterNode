@@ -1,7 +1,7 @@
 
-import DB.DAO.CompanyDao;
-import DB.DAO.CompanyDbDao;
-import DB.DAO.Read;
+import MasterData.UserDao;
+import Models.User;
+import Services.LoginService;
 import org.json.simple.JSONObject;
 
 import java.io.IOException;
@@ -19,18 +19,22 @@ public class Main {
 
     public static void main(String[] args) {
         String uniqueID = UUID.randomUUID().toString();
-
+//
        // System.out.println(uniqueID);
-        //load();
-//        Read read = new Read();
-//        read.read();
-        CompanyDao dao = new CompanyDbDao();
-       // dao.addCompany();
+
 
 //        WriteTest writeTest = new WriteTest();
 //        writeTest.write();
 
          //System.out.println(list);
+
+//        ConnectionPool connectionPool = BasicConnectionPool
+//                .create("http://localhost:8080/DocumentDB-1.0-SNAPSHOT/Companies", "user", "password");
+//        System.out.println(connectionPool.getPassword());
+////        connectionPool.getPassword();
+//        connectionPool.readCompanies();
+
+
 
     }
 
