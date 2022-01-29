@@ -2,7 +2,9 @@ import MasterData.CompanyDbDao;
 import Models.Company;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.apache.http.*;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,10 +14,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.*;
 import java.net.*;
+import java.net.http.HttpClient;
 import java.util.Base64;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 
 @WebServlet(name = "Master", value = "/Master")
 
@@ -39,18 +47,36 @@ public class Master extends HttpServlet {
 //        Object roleSession = session.getAttribute("role");
 
 
-            System.out.println(roleContext + " " + roleContext.equals("admin"));
+         //   System.out.println(roleContext + " " + roleContext.equals("admin"));
             resp.setHeader("Content-Type", "application/json");
             CompanyDbDao com = new CompanyDbDao();
             List companies = com.getCompanies();
 
             PrintWriter out = resp.getWriter();
 
+
+
+            /////////
+
+         //   URL weburl = new URL("http://localhost:8080/DocumentDB-1.0-SNAPSHOT/Master ");
+//            Proxy webProxy
+//                    = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("http://localhost:8082/Load-Balancer/test", 8082));
+//            HttpURLConnection webProxyConnection
+//                    = (HttpURLConnection) weburl.openConnection(webProxy);
+//            webProxyConnection.setDoOutput(true);
+//            System.out.println( webProxyConnection.getOutputStream());
+
+            /////
+
+
+
+
+           /////
 //        HttpClient client = HttpClient.newHttpClient();
 //        HttpRequest request = HttpRequest.newBuilder()
 //                .uri(URI.create("http://localhost:8082/Load-Balancer/test"))
 //                .build();
-
+//
 //        try {
 //            HttpResponse<String> response =
 //                    client.send(request, HttpResponse.BodyHandlers.ofString());
@@ -60,9 +86,11 @@ public class Master extends HttpServlet {
 //        } catch (InterruptedException e) {
 //            e.printStackTrace();
 //        }
-            //  resp.getOutputStream().println(json);
+//              resp.getOutputStream().println(json);
 
             out.println(companies);
+
+
         }
 
     }

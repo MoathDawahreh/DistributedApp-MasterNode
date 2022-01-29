@@ -17,6 +17,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.*;
+import java.net.URI;
+import java.net.http.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -51,16 +54,29 @@ public class Controller extends HttpServlet {
             ServletContext context = getServletContext();
             context.setAttribute("role", user.getRole());
 
-//            HttpSession session =req.getSession() ;
-//            session.setAttribute("role",user.getRole());
+
+            /////
+
+            //httpclient
 
 
-            //  ServletContext context = getServletContext();
+//        HttpClient client = HttpClient.newHttpClient();
+//        HttpRequest request = HttpRequest.newBuilder()
+//                .uri(URI.create("http://localhost:8082/Load-Balancer/test"))
+//                .build();
+//
+//        try {
+//            HttpResponse<String> response =
+//                    client.send(request, HttpResponse.BodyHandlers.ofString());
+//            System.out.println(response.body());
+//            out.println(response.body());
+//
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
 
-            //resp.encodeRedirectURL("/Master");
-            //  resp.sendRedirect("/Master");
-//            req.getRequestDispatcher("/Master").forward(
-//                    req, resp);
+
+
 
         } else if (isValidUser && user.getRole().equals("reader")) {
             resp.setStatus(201);
