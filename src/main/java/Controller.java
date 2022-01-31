@@ -92,9 +92,7 @@ public class Controller extends HttpServlet {
 
 
     }
-
-    public void destroy() {
-    }
+ 
 
 }
 

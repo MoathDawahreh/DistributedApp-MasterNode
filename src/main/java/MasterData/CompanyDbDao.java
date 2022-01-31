@@ -25,8 +25,7 @@ public class CompanyDbDao implements CompanyDao {
             Object obj = jsonParser.parse(reader);
 
             companiesList = (JSONArray) obj;
-            // System.out.println(companiesList);
-             //Iterate over employee array
+              //Iterate over employee array
             companiesList.forEach(emp -> parseEmployeeObject((JSONObject) emp));
         } catch (IOException | ParseException e) {
             e.printStackTrace();
