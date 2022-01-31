@@ -28,7 +28,7 @@ public class UserDao {
 
 
         JSONObject userDetails = new JSONObject();
-       userDetails.put("userName", user.getUserName());
+        userDetails.put("userName", user.getUserName());
         userDetails.put("password", user.getPassword());
         userDetails.put("role", user.getRole());
 
@@ -64,7 +64,7 @@ public class UserDao {
             users.forEach(u -> parseUserObject((JSONObject) u));
 
             // userList.add(u);
-         //   hashMap.put(userName, u);
+            //   hashMap.put(userName, u);
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
@@ -72,7 +72,7 @@ public class UserDao {
         return hashMap.get(username);
     }
 
-    public JSONArray  getUsers(){
+    public JSONArray getUsers() {
         JSONParser jsonParser = new JSONParser();
         JSONArray usersList = new JSONArray();
         try (FileReader reader = new FileReader("users.json")) {
@@ -80,15 +80,11 @@ public class UserDao {
             Object obj = jsonParser.parse(reader);
 
             usersList = (JSONArray) obj;
-            // System.out.println(usersList);
-            //Iterate over employee array
-          //  usersList.forEach(emp -> parseUserObject((JSONObject) emp));
+            //  usersList.forEach(emp -> parseUserObject((JSONObject) emp));
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
         return usersList;
-
-
 
 
     }
@@ -104,12 +100,10 @@ public class UserDao {
 
         String role = (String) userObject.get("role");
         User u = new User(userName, password, role);
-          hashMap.put(userName, u);
+        hashMap.put(userName, u);
 
 
     }
-
-
 
 
 }
