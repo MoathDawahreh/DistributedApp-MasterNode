@@ -20,12 +20,13 @@ public class CompanyDbDao implements CompanyDao {
 
         JSONParser jsonParser = new JSONParser();
         JSONArray companiesList = new JSONArray();
-        try (FileReader reader = new FileReader("C:\\Users\\moath\\Desktop\\Database\\Companies.json")) {
+        try (FileReader reader = new FileReader("DB.json")) {
             //Read JSON file
             Object obj = jsonParser.parse(reader);
 
             companiesList = (JSONArray) obj;
-              //Iterate over employee array
+            // System.out.println(companiesList);
+             //Iterate over employee array
             companiesList.forEach(emp -> parseEmployeeObject((JSONObject) emp));
         } catch (IOException | ParseException e) {
             e.printStackTrace();
