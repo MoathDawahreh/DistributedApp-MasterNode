@@ -36,7 +36,6 @@ public class Controller extends HttpServlet {
 //    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 //
 //    }
-
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 //        LoginService service = new LoginService();
