@@ -14,7 +14,7 @@ public class Read {
     public JSONArray read() {
         JSONParser jsonParser = new JSONParser();
         JSONArray employeeList = new JSONArray();
-        try (FileReader reader = new FileReader("DB.json")) {
+        try (FileReader reader = new FileReader("Companies.json")) {
             //Read JSON file
             Object obj = jsonParser.parse(reader);
 
