@@ -34,11 +34,15 @@ public class Master extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         ServletContext context = getServletContext();
+        ////String content = new String(Base64.getDecoder().decode(req.getHeader("Authorization")));
 
+
+        System.out.println(req.getHeader("Authorization"));
+       // System.out.println(content);
         String roleContext = (String) context.getAttribute("role");
-        if (roleContext == null || !roleContext.equals("admin")) {
-            resp.setStatus(403);
-        } else {
+//        if (roleContext == null || !roleContext.equals("admin")) {
+//            resp.setStatus(403);
+//        } else {
 
 
             resp.setStatus(200);
@@ -91,7 +95,7 @@ public class Master extends HttpServlet {
             out.println(companies);
 
 
-        }
+    //    }
 
     }
 
