@@ -2,7 +2,7 @@
   {
     "user": {
       "password": "123",
-      "role": "reader",
+      "role": "user",
       "userName": "Thawahreh"
     }
   },
@@ -16,8 +16,15 @@
   {
     "user": {
       "password": "111",
-      "role": "reader",
+      "role": "user",
       "userName": "Hamz"
+    }
+  },
+  {
+    "user": {
+      "password": "22",
+      "role": "admin",
+      "userName": "Jef"
     }
   }
 ]

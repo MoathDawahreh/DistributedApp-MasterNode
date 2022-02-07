@@ -14,15 +14,12 @@ public class BasicConnectionPool extends HttpServlet implements ConnectionPool {
     private Gson GSON = new GsonBuilder().create();
 
 
-    private String url = "http://localhost:8080/DocumentDB-1.0-SNAPSHOT/Companies";
+    private String url = " ";
     private String user;
     private String password;
     private List<Reader> connectionPool;
     private List<Reader> usedConnections = new ArrayList<>();
     private static int INITIAL_POOL_SIZE = 10;
-
-
-
 
 
 

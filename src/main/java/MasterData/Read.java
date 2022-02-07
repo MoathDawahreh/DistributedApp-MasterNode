@@ -21,8 +21,7 @@ public class Read {
             employeeList = (JSONArray) obj;
             System.out.println(employeeList);
 
-            //Iterate over employee array
-            employeeList.forEach(emp -> parseEmployeeObject((JSONObject) emp));
+             employeeList.forEach(emp -> parseEmployeeObject((JSONObject) emp));
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
@@ -30,8 +29,7 @@ public class Read {
     }
 
     private void parseEmployeeObject(JSONObject employee) {
-        //Get employee object within list
-        JSONObject employeeObject = (JSONObject) employee.get("company");
+         JSONObject employeeObject = (JSONObject) employee.get("company");
 
         String companyName = (String) employeeObject.get("companyName");
 

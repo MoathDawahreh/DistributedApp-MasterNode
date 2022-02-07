@@ -1,9 +1,12 @@
 package Models;
 
+import java.util.concurrent.ConcurrentHashMap;
+
 public class Company {
     private String companyName;
     private  String numberOfStaff;
     private String website;
+    private ConcurrentHashMap<String, Company> companies = new ConcurrentHashMap<>();
 
 
     public Company(String companyName, String numberOfStaff, String website) {
@@ -37,5 +40,9 @@ public class Company {
 
     public String getWebsite() {
         return website;
+    }
+
+    public ConcurrentHashMap getAllCompanies(){
+        return companies;
     }
 }

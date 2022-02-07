@@ -89,6 +89,7 @@
 <!--                        <url>http://localhost:8080/manager/text</url>-->
 <!--                        <username>admin</username>-->
 <!--                        <password></password>-->
+<!--                        <port>9090</port>-->
                     </configuration>
 
                 </plugin>

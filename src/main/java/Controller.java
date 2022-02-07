@@ -20,7 +20,9 @@ import java.io.PrintWriter;
 import java.net.*;
 import java.net.URI;
 import java.net.http.*;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 
@@ -29,8 +31,7 @@ import java.util.stream.Collectors;
 public class Controller extends HttpServlet {
     private Gson GSON = new GsonBuilder().create();
     private LoginService service = new LoginService();
-
-//    private   ServletContext context = getServletContext();
+ //    private   ServletContext context = getServletContext();
 //
 //    @Override
 //    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
@@ -39,10 +40,11 @@ public class Controller extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 //        LoginService service = new LoginService();
+        ServletContext context = getServletContext();
+
         PrintWriter out = resp.getWriter();
         resp.setContentType("application/json");
         String input = new BufferedReader(new InputStreamReader(req.getInputStream())).lines().collect(Collectors.joining("\n"));
-
         User user = GSON.fromJson(input, User.class);
 //        System.out.println("userName: " + user.getUserName() + "  password: " + user.getPassword()
 //                + " role: " + user.getRole());
@@ -50,41 +52,18 @@ public class Controller extends HttpServlet {
         boolean isValidUser = service.validateUser(user.getUserName(), user.getPassword(), user.getRole());
         if (isValidUser && user.getRole().equals("admin")) {
             resp.setStatus(201);
-            ServletContext context = getServletContext();
+
             context.setAttribute("role", user.getRole());
 
 
-            /////
-
-            //httpclient
-
-
-//        HttpClient client = HttpClient.newHttpClient();
-//        HttpRequest request = HttpRequest.newBuilder()
-//                .uri(URI.create("http://localhost:8082/Load-Balancer/test"))
-//                .build();
-//
-//        try {
-//            HttpResponse<String> response =
-//                    client.send(request, HttpResponse.BodyHandlers.ofString());
-//            System.out.println(response.body());
-//            out.println(response.body());
-//
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-
-
-
-
-        } else if (isValidUser && user.getRole().equals("reader")) {
+        } else if (isValidUser && user.getRole().equals("user")) {
             resp.setStatus(201);
 
-            //  context.setAttribute("role",user.getRole());
+              context.setAttribute("role",user.getRole());
 
         } else {
             req.setAttribute("errorMessage", "inValid user");
-            out.println("<inValid user");
+            out.println("inValid user");
             resp.setStatus(403);
 
         }

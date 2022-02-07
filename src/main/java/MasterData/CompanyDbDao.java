@@ -21,7 +21,7 @@ public class CompanyDbDao implements CompanyDao {
         JSONParser jsonParser = new JSONParser();
         JSONArray companiesList = new JSONArray();
         //  /mnt/c/users/moath/desktop/database/Companies.json
-        try (FileReader reader = new FileReader("Companies.json")) {
+        try (FileReader reader = new FileReader("C:\\Users\\moath\\Desktop\\Database\\Companies.json")) {
             //Read JSON file
             Object obj = jsonParser.parse(reader);
 
@@ -54,7 +54,7 @@ public class CompanyDbDao implements CompanyDao {
 
 
         try {
-            FileWriter file = new FileWriter("Companies.json");
+            FileWriter file = new FileWriter("C:\\Users\\moath\\Desktop\\Database\\Companies.json");
             file.write(companiesList.toJSONString());
             file.flush();
 
