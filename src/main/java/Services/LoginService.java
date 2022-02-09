@@ -1,13 +1,13 @@
 package Services;
 
-import MasterData.UserDao;
+import MasterData.UserDBDao;
 import Models.User;
 
 public class LoginService {
 
     public boolean validateUser(String userName, String password,String role) {
 
-        UserDao userDao = new UserDao();
+        UserDBDao userDao = new UserDBDao();
         User user = new User();
         user = userDao.getUser(userName);
 

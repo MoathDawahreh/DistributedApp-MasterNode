@@ -1,4 +1,6 @@
 
+import LoadBalancer.LoadBalancer;
+import LoadBalancer.WeightedRoundRobinLoadBalancer;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,7 +15,7 @@ import java.net.http.HttpResponse;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
- import java.util.stream.IntStream;
+import java.util.stream.IntStream;
 
 
 @WebServlet(name = "ReadOnlyServlet", value = "/Reader")
@@ -26,17 +28,15 @@ public class ReadOnlyServlet extends HttpServlet {
     }};
     private LinkedList<String> weightedNodesPool = new LinkedList<String>();
     private int NUM_OF_REQUESTS = 0;
-    private final int maxNodes = 30;
-    //private LoadBalancer weightedRoundRobin = new WeightedRoundRobinLoadBalancer(nodesPool);
+    //private final int maxNodes = 30;
+    //private LoadBalancer.LoadBalancer weightedRoundRobin = new LoadBalancer.WeightedRoundRobinLoadBalancer(nodesPool);
 
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         resp.setStatus(200);
         LoadBalancer weightedRoundRobin = new WeightedRoundRobinLoadBalancer(nodesPool);
-        NUM_OF_REQUESTS++;
         ServletContext context = getServletContext();
-
         resp.setHeader("Content-Type", "application/json");
 
 //
@@ -44,15 +44,20 @@ public class ReadOnlyServlet extends HttpServlet {
 //        HttpSession session = req.getSession();
 //        Object roleSession = session.getAttribute("role");
         String roleContext = (String) context.getAttribute("role");
+
+//        synchronized(getServletContext()) {
+//            String roleContext = getServletContext().getAttribute("role");
+//           }
+
         if (roleContext == null || !roleContext.equals("user")) {
             resp.setStatus(403);
         } else {
-
-
+            NUM_OF_REQUESTS++;
 
 
         if (weightedNodesPool.size() < NUM_OF_REQUESTS) {
-            GenerateConcurrentNodes(weightedRoundRobin, maxNodes);
+
+            GenerateWeightedNodes(weightedRoundRobin);
         }
 
 
@@ -76,7 +81,7 @@ public class ReadOnlyServlet extends HttpServlet {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
+            resp.sendRedirect(weightedNodesPool.get(NUM_OF_REQUESTS - 1));
 
         if (weightedNodesPool.size() == NUM_OF_REQUESTS) {
             NUM_OF_REQUESTS = 0;
@@ -86,20 +91,14 @@ public class ReadOnlyServlet extends HttpServlet {
         }
     }
 
-    private void GenerateConcurrentNodes(LoadBalancer loadBalancer, int numOfCalls) {
+    private void GenerateWeightedNodes(LoadBalancer loadBalancer) {
         IntStream
-                .range(0, numOfCalls)
+                .range(0, 30)
                 .parallel()
                 .forEach(i ->
-                        //  System.out.println(i)
-                        //     pool.put(loadBalancer.getIp(),i)
                         weightedNodesPool.add(loadBalancer.getIp())
-
                 );
-
-        weightedNodesPool.forEach(e -> System.out.println(e));
-
-
+       weightedNodesPool.forEach(e -> System.out.println(e));
     }
 
 

@@ -1,3 +1,5 @@
+package LoadBalancer;
+
 import java.util.*;
 
 public abstract class LoadBalancer {
@@ -7,5 +9,5 @@ public abstract class LoadBalancer {
         this.ipList = Collections.unmodifiableList(ipList);
     }
 
-    abstract String getIp();
+    public abstract String getIp();
 }

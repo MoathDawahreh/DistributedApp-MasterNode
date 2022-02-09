@@ -50,22 +50,14 @@ public class MasterWriteReadServlet extends HttpServlet {
             resp.setStatus(403);
         } else {
 
-
             resp.setStatus(201);
-            //resp.getOutputStream().println("Hello, World from Post Method");
             resp.setContentType("application/json");
 
-            //BufferedReader reader = new BufferedReader(new InputStreamReader(req.getInputStream()));
             String input = new BufferedReader(new InputStreamReader(req.getInputStream())).lines().collect(Collectors.joining("\n"));
 
             Company company = GSON.fromJson(input, Company.class);
-            //    System.out.println("input iss"+company );
-
-            // System.out.println("input iss"+company.getNumberOfStaff() );
             CompanyDbDao dao = new CompanyDbDao();
             dao.addCompany(company);
-
-            //resp.getOutputStream().println(in);
         }
     }
 

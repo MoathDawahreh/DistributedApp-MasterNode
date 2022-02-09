@@ -6,13 +6,13 @@ import java.io.IOException;
 import java.util.concurrent.ConcurrentHashMap;
 
 import Models.Company;
- import org.json.simple.JSONArray;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 public class CompanyDbDao implements CompanyDao {
-    private ConcurrentHashMap<String, Company> concurrentHashMaphashMap = new ConcurrentHashMap<>();
+    public ConcurrentHashMap<String, Company> concurrentHashMaphashMap = new ConcurrentHashMap<>();
 
 
     @Override
@@ -27,7 +27,6 @@ public class CompanyDbDao implements CompanyDao {
 
             companiesList = (JSONArray) obj;
             // System.out.println(companiesList);
-             //Iterate over employee array
             companiesList.forEach(emp -> parseEmployeeObject((JSONObject) emp));
         } catch (IOException | ParseException e) {
             e.printStackTrace();
@@ -74,10 +73,9 @@ public class CompanyDbDao implements CompanyDao {
         String website = (String) companyObject.get("website");
 
         Company company = new Company(companyName, NumberOfStaff, website);
-       // System.out.println(company);
-        concurrentHashMaphashMap.put(companyName,company);
+        concurrentHashMaphashMap.put(companyName, company);
 
-      //  concurrentHashMaphashMap.forEach( (k,v)-> System.out.println( ));
+        //  concurrentHashMaphashMap.forEach( (k,v)-> System.out.println( ));
 
 
     }

@@ -1,14 +1,17 @@
+package LoadBalancer;
+
+import LoadBalancer.LoadBalancer;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
-import java.util.*;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class WeightedRoundRobinLoadBalancer extends LoadBalancer {
 
     private int counter = 0;
     private final ReentrantLock lock;
- //   private  Map<String, Integer> ipPoolWeighted = new HashMap<>();
+    //   private  Map<String, Integer> ipPoolWeighted = new HashMap<>();
 
     @Override
     public String getIp() {
@@ -27,12 +30,11 @@ public class WeightedRoundRobinLoadBalancer extends LoadBalancer {
 
     public WeightedRoundRobinLoadBalancer(Map<String, Integer> ipMap) {
         super(
-
                 ipMap.keySet()
                         .stream()
                         .map(ip -> {
-                            List<String> tempList =  new LinkedList<>();
-                            for (int i=0; i<ipMap.get(ip); i++) {
+                            List<String> tempList = new LinkedList<>();
+                            for (int i = 0; i < ipMap.get(ip); i++) {
                                 tempList.add(ip);
                             }
                             return tempList;

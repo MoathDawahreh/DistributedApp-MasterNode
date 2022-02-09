@@ -1,6 +1,4 @@
-import MasterData.CompanyDbDao;
-import MasterData.UserDao;
-import Models.Company;
+import MasterData.UserDBDao;
 import Models.User;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -18,8 +16,8 @@ import java.io.InputStreamReader;
 import java.util.stream.Collectors;
 
 
-@WebServlet(name = "Clear&add", value = "/Clear&add")
-public class KillSessionAdduser extends HttpServlet {
+@WebServlet(name = "SuperAdmin", value = "/SuperAdmin")
+public class SuperAdmin extends HttpServlet {
     private Gson GSON = new GsonBuilder().create();
 
     @Override
@@ -29,30 +27,26 @@ public class KillSessionAdduser extends HttpServlet {
         HttpSession session = req.getSession();
         session.removeAttribute("userName");
         session.invalidate();
+//        synchronized(getServletContext()) {
+//            getServletContext().removeAttribute("role");
+//         }
+
+
         resp.setStatus(200);
     }
-
-
-
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
             resp.setStatus(201);
-            //resp.getOutputStream().println("Hello, World from Post Method");
             resp.setContentType("application/json");
 
-            //BufferedReader reader = new BufferedReader(new InputStreamReader(req.getInputStream()));
             String input = new BufferedReader(new InputStreamReader(req.getInputStream())).lines().collect(Collectors.joining("\n"));
 
             User user = GSON.fromJson(input, User.class);
-            //    System.out.println("input iss"+user );
-
-            // System.out.println("input iss"+user.getNumberOfStaff() );
-            UserDao dao = new UserDao();
+            UserDBDao dao = new UserDBDao();
             dao.addUser(user);
 
-            //resp.getOutputStream().println(in);
         }
 
 

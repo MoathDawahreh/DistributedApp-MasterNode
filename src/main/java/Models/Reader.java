@@ -1,3 +1,5 @@
+package Models;
+
 import MasterData.CompanyDbDao;
 import org.json.simple.JSONArray;
 
@@ -15,10 +17,10 @@ public class Reader {
     public Reader() {
 
     }
-
-    public String getUserName() {
-        return userName;
-    }
+//
+//    public String getUserName() {
+//        return userName;
+//    }
 
     public JSONArray readCompanies() {
         CompanyDbDao companies = new CompanyDbDao();

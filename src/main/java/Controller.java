@@ -1,6 +1,3 @@
-import MasterData.CompanyDbDao;
-
-import Models.Company;
 import Models.User;
 import Services.LoginService;
 import com.google.gson.Gson;
@@ -17,12 +14,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.net.*;
-import java.net.URI;
-import java.net.http.*;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+
 import java.util.stream.Collectors;
 
 
@@ -31,35 +23,31 @@ import java.util.stream.Collectors;
 public class Controller extends HttpServlet {
     private Gson GSON = new GsonBuilder().create();
     private LoginService service = new LoginService();
- //    private   ServletContext context = getServletContext();
-//
-//    @Override
-//    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-//
-//    }
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-//        LoginService service = new LoginService();
         ServletContext context = getServletContext();
-
-        PrintWriter out = resp.getWriter();
+         PrintWriter out = resp.getWriter();
         resp.setContentType("application/json");
         String input = new BufferedReader(new InputStreamReader(req.getInputStream())).lines().collect(Collectors.joining("\n"));
         User user = GSON.fromJson(input, User.class);
-//        System.out.println("userName: " + user.getUserName() + "  password: " + user.getPassword()
-//                + " role: " + user.getRole());
 
         boolean isValidUser = service.validateUser(user.getUserName(), user.getPassword(), user.getRole());
         if (isValidUser && user.getRole().equals("admin")) {
             resp.setStatus(201);
 
             context.setAttribute("role", user.getRole());
+//            synchronized(getServletContext()) {
+//                getServletContext().setAttribute("role", user.getRole());
+//            }
 
 
         } else if (isValidUser && user.getRole().equals("user")) {
             resp.setStatus(201);
 
-              context.setAttribute("role",user.getRole());
+            context.setAttribute("role", user.getRole());
+
+            // resp.sendRedirect("/DocumentDB-1.0-SNAPSHOT/Models.Reader");
 
         } else {
             req.setAttribute("errorMessage", "inValid user");
@@ -67,7 +55,6 @@ public class Controller extends HttpServlet {
             resp.setStatus(403);
 
         }
-
 
     }
 

@@ -69,7 +69,6 @@
     <build>
 
 
-
         <pluginManagement>
             <plugins>
 
@@ -85,11 +84,11 @@
                     <version>2.1</version>
                     <configuration>
                         <path>/DocumentDB-1.0-SNAPSHOT</path>
-  <!-- when running tomcat in docker the  war name should be included like this   http://localhost:8080/DocumentDB-1.0-SNAPSHOT/Companies          -->
-<!--                        <url>http://localhost:8080/manager/text</url>-->
-<!--                        <username>admin</username>-->
-<!--                        <password></password>-->
-<!--                        <port>9090</port>-->
+                        <!-- when running tomcat in docker the  war name should be included like this   http://localhost:8080/DocumentDB-1.0-SNAPSHOT/Companies          -->
+                        <!--                        <url>http://localhost:8080/manager/text</url>-->
+                        <!--                        <username>admin</username>-->
+                        <!--                        <password></password>-->
+                        <!--                        <port>9090</port>-->
                     </configuration>
 
                 </plugin>
@@ -97,7 +96,6 @@
 
             </plugins>
         </pluginManagement>
-
 
 
     </build>
