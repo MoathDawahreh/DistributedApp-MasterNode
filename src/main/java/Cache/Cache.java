@@ -1,11 +1,17 @@
 package Cache;
 
-import java.util.Optional;
+import Models.Company;
 
-public interface Cache<K, V> {
-    boolean set(K key, V value);
-    Optional<V> get(K key);
-    int size();
-    boolean isEmpty();
-    void clear();
+import java.util.Optional;
+import java.util.concurrent.ConcurrentHashMap;
+
+public interface Cache {
+    public boolean get(String key);
+
+    public void refer(String key);
+
+    public void display();
+
+    public void put(String key);
+
 }

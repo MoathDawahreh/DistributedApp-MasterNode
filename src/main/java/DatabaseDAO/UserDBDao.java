@@ -1,4 +1,4 @@
-package MasterData;
+package DatabaseDAO;
 
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -16,14 +16,13 @@ import org.json.simple.parser.ParseException;
 
 public class UserDBDao implements UserDao {
 
-    private List<User> userList = new ArrayList<>();
-    private HashMap<String, User> hashMap = new HashMap<>();
+    private final List<User> userList = new ArrayList<>();
+    private final HashMap<String, User> hashMap = new HashMap<>();
 
     @Override
     public void addUser(User user) {
 
         JSONArray companiesList = getUsers();
-
 
         JSONObject userDetails = new JSONObject();
         userDetails.put("userName", user.getUserName());

@@ -1,6 +1,6 @@
 package Services;
 
-import MasterData.UserDBDao;
+import DatabaseDAO.UserDBDao;
 import Models.User;
 
 public class LoginService {

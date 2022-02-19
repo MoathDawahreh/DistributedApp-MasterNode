@@ -1,4 +1,5 @@
-import MasterData.CompanyDbDao;
+import Cache.LRUCache;
+import DatabaseDAO.CompanyDbDao;
 import Models.Company;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -17,6 +18,7 @@ import java.util.stream.Collectors;
 
 public class MasterWriteReadServlet extends HttpServlet {
     private Gson GSON = new GsonBuilder().create();
+    private final LRUCache cache = new LRUCache();
 
 
     @Override
@@ -52,7 +54,7 @@ public class MasterWriteReadServlet extends HttpServlet {
 
             resp.setStatus(201);
             resp.setContentType("application/json");
-
+            LRUCache.cachedData="";
             String input = new BufferedReader(new InputStreamReader(req.getInputStream())).lines().collect(Collectors.joining("\n"));
 
             Company company = GSON.fromJson(input, Company.class);

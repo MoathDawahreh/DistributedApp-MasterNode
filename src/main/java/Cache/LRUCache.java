@@ -1,26 +1,30 @@
 package Cache;
 
-import MasterData.CompanyDbDao;
+import DatabaseDAO.CompanyDbDao;
 import Models.Company;
+import org.json.simple.JSONArray;
 //import org.json.simple.ConcurrentHashMap<String, Company>;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
-class LRUCache {
+public class LRUCache implements Cache {
 
-    Set<ConcurrentHashMap<String, Company>> cache;
+//    Set<String> cache;
     private final int capacity = 5;
+        Set<String> cache= new LinkedHashSet<>(capacity);
 
-    public LRUCache() {
-        this.cache = new LinkedHashSet<ConcurrentHashMap<String, Company>>(capacity);
-    }
+    public static String cachedData="";
+
+//    public LRUCache() {
+//        this.cache = new LinkedHashSet<>(capacity);
+//    }
 
     // This function returns false if key is not
     // present in cache. Else it moves the key to
     // front by first removing it and then adding
     // it, and returns true.
-    public boolean get(ConcurrentHashMap<String, Company> key) {
+    public boolean get(String key) {
         if (!cache.contains(key))
             return false;
         cache.remove(key);
@@ -29,51 +33,58 @@ class LRUCache {
     }
 
     /* Refers key x with in the LRU cache */
-    public void refer(ConcurrentHashMap<String, Company> key) {
-        if (get(key) == false)
+    public void refer(String key) {
+        if (!get(key))
             put(key);
     }
 
-    // displays contents of cache in Reverse Order
+    // display contents of cache in Reverse Order
     public void display() {
-        LinkedList<ConcurrentHashMap<String, Company>> list = new LinkedList<ConcurrentHashMap<String, Company>>(cache);
+        LinkedList<String> list = new LinkedList<>(cache);
 
         // The descendingIterator() method of java.util.LinkedList
         // class is used to return an iterator over the elements
         // in this LinkedList in reverse sequential order
-        Iterator<ConcurrentHashMap<String, Company>> itr = list.descendingIterator();
+        Iterator<String> itr = list.descendingIterator();
 
         while (itr.hasNext())
-            System.out.print(itr.next() + " *************  ");
+            System.out.print(itr.next() );
     }
 
-    public void put(ConcurrentHashMap<String, Company> key) {
+    public void put(String key) {
 
         if (cache.size() == capacity) {
-            ConcurrentHashMap<String, Company> firstKey = cache.iterator().next();
+            String firstKey = cache.iterator().next();
             cache.remove(firstKey);
         }
 
         cache.add(key);
     }
-
+//testing
     public static void main(String[] args) {
         CompanyDbDao c = new CompanyDbDao();
-        ConcurrentHashMap<String, Company> concurrentHashMaphashMap = c.concurrentHashMaphashMap;
-        Company company = new Company("maktoob", "5", "website");
+        ConcurrentHashMap<String, Company> concurrentHashMaphashMap =c.concurrentHashMaphashMap;
+       // Company company = new Company("maktoob", "5", "website");
 
-        c.getCompanies();
+      c.getCompanies();
+        String test = ""+concurrentHashMaphashMap;
+        JSONArray jar= c.getCompanies();
         LRUCache cache = new LRUCache();
-        cache.refer(concurrentHashMaphashMap);
-        concurrentHashMaphashMap.put("maktoobz",company);
-         cache.refer(concurrentHashMaphashMap);
-//        cache.refer(3);
-//        cache.refer(1);
+        // cache.refer( jar+"");
+    //  cache.refer("mamamamammamaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 //        cache.refer(4);
 //        cache.refer(5);
-        cache.display();
-        System.out.println(cache.get(concurrentHashMaphashMap));
+     //   cache.display();
+        System.out.println(cache.get(LRUCache.cachedData));
+         if (!cache.get(LRUCache.cachedData))
+             System.out.println("empty chace");
+        cache.refer( jar+"");
 
-        //System.out.println(concurrentHashMaphashMap.get("Atypon").getCompanyName());
-    }
+        LRUCache.cachedData =jar+"";
+       // if (cache.get(LRUCache.cachedData))
+        System.out.println(cache.get(LRUCache.cachedData));
+
+
+
+     }
 }
