@@ -12,8 +12,26 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 public class CompanyDbDao implements CompanyDao {
-    public ConcurrentHashMap<String, Company> concurrentHashMaphashMap = new ConcurrentHashMap<>();
+     public ConcurrentHashMap<String, Company> concurrentHashMaphashMap = new ConcurrentHashMap<>();
+    private ConcurrentHashMap<String, Company> FindCompanyByName = new ConcurrentHashMap<>();
 
+    public ConcurrentHashMap<String, Company> getFindCompanyByName() {
+        JSONParser jsonParser = new JSONParser();
+        JSONArray companiesList = new JSONArray();
+        //  /mnt/c/users/moath/desktop/database/Companies.json
+        try (FileReader reader = new FileReader("C:\\Users\\moath\\Desktop\\Database\\Companies.json")) {
+            //Read JSON file
+            Object obj = jsonParser.parse(reader);
+
+            companiesList = (JSONArray) obj;
+            // System.out.println(companiesList);
+            companiesList.forEach(emp -> parseEmployeeObject((JSONObject) emp));
+        } catch (IOException | ParseException e) {
+            e.printStackTrace();
+        }
+
+        return FindCompanyByName;
+    }
 
     @Override
     public JSONArray getCompanies() {
@@ -27,7 +45,7 @@ public class CompanyDbDao implements CompanyDao {
 
             companiesList = (JSONArray) obj;
             // System.out.println(companiesList);
-            companiesList.forEach(emp -> parseEmployeeObject((JSONObject) emp));
+         //   companiesList.forEach(emp -> parseEmployeeObject((JSONObject) emp));
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
@@ -62,6 +80,8 @@ public class CompanyDbDao implements CompanyDao {
         }
     }
 
+
+
     private void parseEmployeeObject(JSONObject employee) {
         //Get a company in from the list
         JSONObject companyObject = (JSONObject) employee.get("company");
@@ -73,7 +93,7 @@ public class CompanyDbDao implements CompanyDao {
         String website = (String) companyObject.get("website");
 
         Company company = new Company(companyName, NumberOfStaff, website);
-        concurrentHashMaphashMap.put(companyName, company);
+        FindCompanyByName.put(companyName, company);
 
         //  concurrentHashMaphashMap.forEach( (k,v)-> System.out.println( ));
 
