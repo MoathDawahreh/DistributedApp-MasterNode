@@ -19,12 +19,5 @@
       "role": "user",
       "userName": "Hamz"
     }
-  },
-  {
-    "user": {
-      "password": "22",
-      "role": "admin",
-      "userName": "Jef"
-    }
   }
 ]

@@ -11,8 +11,8 @@ public class test {
         NewsReader observer = new NewsReader();
 
         observable.addObserver(observer);
-        observable.setNews("news");
-        assertEquals(observer.getNews(), "news");
+        observable.setNews("test");
+        assertEquals(observer.getNews(), "test");
  //        observable.setNews("m");'
 //        System.out.println(observer.getNews());
         observable.setNews("m");

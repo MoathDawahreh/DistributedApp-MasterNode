@@ -60,25 +60,5 @@ public class LRUCache implements Cache {
 
         cache.add(key);
     }
-//testing
-    public static void main(String[] args) {
-        CompanyDbDao companyDbDao = new CompanyDbDao();
 
-     ConcurrentHashMap<String, Company> companiesList =companyDbDao.getFindCompanyByName();
-        System.out.println(companiesList.get("Atypon").getCompanyName());
-         JSONArray jar= companyDbDao.getCompanies();
-        LRUCache cache = new LRUCache();
-
-        System.out.println(cache.get(LRUCache.cachedData));
-         if (!cache.get(LRUCache.cachedData))
-             System.out.println("empty chace");
-        cache.refer( jar+"");
-
-        LRUCache.cachedData =jar+"";
-       // if (cache.get(LRUCache.cachedData))
-        System.out.println(cache.get(LRUCache.cachedData));
-
-
-
-     }
 }
